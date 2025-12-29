@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import {
     ShieldCheck,
     BellRinging,
@@ -37,28 +36,10 @@ const Landing = ({ user }) => {
 
     return (
         <React.Fragment>
-            <Helmet>
-                <title>Notifiq | Centralized College Notices & Alerts</title>
-                <meta name="description" content="Never miss an exam or urgent circular. Notifiq centralizes college notices, providing real-time alerts and verified updates for students and faculty." />
-                <link rel="canonical" href="https://notifiq.app/" />
-                {/* Open Graph / Facebook */}
-                <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://notifiq.app/" />
-                <meta property="og:title" content="Notifiq | Chaos Free Campus Updates" />
-                <meta property="og:description" content="Stop scrolling through WhatsApp groups. Get verified college notices instantly." />
-                <meta property="og:image" content="https://notifiq.app/og-image.jpg" />
-                {/* Twitter */}
-                <meta property="twitter:card" content="summary_large_image" />
-                <meta property="twitter:url" content="https://notifiq.app/" />
-                <meta property="twitter:title" content="Notifiq | Centralized College Notices" />
-                <meta property="twitter:description" content="Real-time alerts for exams and circulars." />
-                <meta property="twitter:image" content="https://notifiq.app/og-image.jpg" />
-                {/* JSON-LD Schema */}
-                <script type="application/ld+json">
-                    {JSON.stringify(schemaData)}
-                </script>
-            </Helmet>
-
+            {/* JSON-LD Schema */}
+            <script type="application/ld+json">
+                {JSON.stringify(schemaData)}
+            </script>
             <div className="landing-container">
                 {/* Navigation - Only show if NOT logged in */}
                 {!user && (

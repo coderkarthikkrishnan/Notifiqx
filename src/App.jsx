@@ -3,7 +3,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth, db } from './lib/firebase';
 import { doc, onSnapshot } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
-import { HelmetProvider } from 'react-helmet-async';
+
 
 import Login from './pages/Login';
 import AdminDashboard from './pages/AdminDashboard';
@@ -70,40 +70,38 @@ function App() {
     }
 
     return (
-        <HelmetProvider>
-            <ThemeProvider>
-                <NotificationProvider user={user}>
-                    <BrowserRouter>
-                        <Layout user={user}>
-                            <Routes>
-                                <Route path="/" element={<Landing user={user} />} />
-                                <Route path="/landing" element={<Landing user={user} />} />
-                                <Route path="/login" element={<Login />} />
-                                <Route path="/contact" element={<Contact />} />
-                                <Route path="/admin" element={
-                                    <ProtectedRoute user={user}>
-                                        <AdminDashboard user={user} />
-                                    </ProtectedRoute>
-                                } />
-                                <Route path="/viewer" element={
-                                    <ProtectedRoute user={user}>
-                                        <ViewerDashboard user={user} />
-                                    </ProtectedRoute>
-                                } />
-                                <Route path="/profile" element={
-                                    <ProtectedRoute user={user}>
-                                        <Profile user={user} />
-                                    </ProtectedRoute>
-                                } />
-                                <Route path="/super" element={
-                                    user?.role === 'super_admin' ? <SuperAdmin /> : <Navigate to="/" />
-                                } />
-                            </Routes>
-                        </Layout>
-                    </BrowserRouter>
-                </NotificationProvider>
-            </ThemeProvider>
-        </HelmetProvider>
+        <ThemeProvider>
+            <NotificationProvider user={user}>
+                <BrowserRouter>
+                    <Layout user={user}>
+                        <Routes>
+                            <Route path="/" element={<Landing user={user} />} />
+                            <Route path="/landing" element={<Landing user={user} />} />
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/contact" element={<Contact />} />
+                            <Route path="/admin" element={
+                                <ProtectedRoute user={user}>
+                                    <AdminDashboard user={user} />
+                                </ProtectedRoute>
+                            } />
+                            <Route path="/viewer" element={
+                                <ProtectedRoute user={user}>
+                                    <ViewerDashboard user={user} />
+                                </ProtectedRoute>
+                            } />
+                            <Route path="/profile" element={
+                                <ProtectedRoute user={user}>
+                                    <Profile user={user} />
+                                </ProtectedRoute>
+                            } />
+                            <Route path="/super" element={
+                                user?.role === 'super_admin' ? <SuperAdmin /> : <Navigate to="/" />
+                            } />
+                        </Routes>
+                    </Layout>
+                </BrowserRouter>
+            </NotificationProvider>
+        </ThemeProvider>
     );
 }
 

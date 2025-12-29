@@ -1,10 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { auth } from '../lib/firebase';
 import { SignOut, Envelope, User, IdentificationCard, Buildings } from 'phosphor-react';
 import './Profile.css';
-
 
 const Profile = ({ user }) => {
     const navigate = useNavigate();
@@ -18,10 +16,6 @@ const Profile = ({ user }) => {
 
     return (
         <React.Fragment>
-            <Helmet>
-                <title>{user.name || 'User'} | Notifiq Profile</title>
-                <meta name="robots" content="noindex, nofollow" /> {/* User profiles should usually be private */}
-            </Helmet>
             <div className="profile-container">
                 <div className="profile-card">
                     <div className="profile-header">
