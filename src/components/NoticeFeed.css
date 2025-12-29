@@ -1,0 +1,46 @@
+/* NoticeFeed.css */
+.notice-feed-container {
+    padding-bottom: 2rem;
+}
+
+.masonry-grid {
+    display: flex;
+    width: auto;
+    gap: 1rem;
+}
+
+.masonry-col {
+    flex: 1;
+    /* Stretch to fill available space */
+    display: flex;
+    flex-direction: column;
+    /* gap managed by card margin-bottom or flex gap */
+    gap: 1rem;
+    min-width: 0;
+    /* Prevents overflow */
+}
+
+.loading-container {
+    padding: 2rem;
+    text-align: center;
+    color: var(--color-text-muted);
+}
+
+.error-container {
+    padding: 1rem;
+    background: #fee2e2;
+    color: #991b1b;
+    border-radius: var(--radius-md);
+    margin-bottom: 1rem;
+}
+
+/* Responsive Columns */
+@media (max-width: 1100px) {
+    /* 3 cols handled by js logic generally, but can enforce here if needed */
+}
+
+@media (max-width: 768px) {
+    .masonry-grid {
+        flex-direction: column;
+    }
+}

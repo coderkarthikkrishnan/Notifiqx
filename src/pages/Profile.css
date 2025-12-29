@@ -1,0 +1,261 @@
+/* ===============================
+   PROFILE WRAPPER
+================================ */
+.profile-container {
+    padding: 2rem;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    overflow: hidden;
+    /* ensure background elements don't spill */
+}
+
+/* Background Gradients (Similar to Login) */
+.profile-container::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -10%;
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle, var(--color-primary-subtle) 0%, transparent 70%);
+    filter: blur(80px);
+    z-index: 0;
+    opacity: 0.6;
+}
+
+[data-theme='dark'] .profile-container::before {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+}
+
+/* ===============================
+   GLASS CARD
+================================ */
+.profile-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 24px;
+    box-shadow: 0 20px 40px -4px rgba(0, 0, 0, 0.1);
+    padding: 3rem 2.5rem;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    z-index: 10;
+    transition: transform 0.3s ease;
+}
+
+[data-theme='dark'] .profile-card {
+    background: rgba(20, 20, 20, 0.6);
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.profile-card:hover {
+    transform: translateY(-5px);
+}
+
+/* ===============================
+   HEADER & AVATAR
+================================ */
+.profile-header {
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-avatar-large {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    margin: 0 auto 1.25rem;
+    overflow: hidden;
+    padding: 4px;
+    background: linear-gradient(135deg, var(--gray-200), white);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] .profile-avatar-large {
+    background: linear-gradient(135deg, var(--gray-800), var(--gray-700));
+}
+
+.profile-avatar-large img,
+.profile-avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid white;
+}
+
+[data-theme='dark'] .profile-avatar-large img,
+[data-theme='dark'] .profile-avatar-placeholder {
+    border-color: #1a1a1a;
+}
+
+.profile-avatar-placeholder {
+    background: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: 700;
+    color: white;
+}
+
+.profile-name {
+    font-family: 'Monument Extended', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--color-text);
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.profile-role-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.4rem 1.2rem;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: var(--color-primary);
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] .profile-role-badge {
+    background: white;
+    color: black;
+}
+
+/* ===============================
+   DETAILS LIST
+================================ */
+.profile-details {
+    text-align: left;
+    margin-bottom: 2.5rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 16px;
+    padding: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+[data-theme='dark'] .profile-details {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.detail-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    transition: background 0.2s;
+    border-radius: 12px;
+}
+
+[data-theme='dark'] .detail-row {
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-row:hover {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme='dark'] .detail-row:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.detail-label {
+    color: var(--color-text-muted);
+    font-weight: 500;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+}
+
+.detail-value {
+    color: var(--color-text);
+    font-weight: 600;
+    font-size: 0.95rem;
+    word-break: break-word;
+    /* wrappable */
+    overflow-wrap: anywhere;
+    /* wrappable */
+}
+
+/* ===============================
+   ACTIONS
+================================ */
+.logout-full-btn {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 14px;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-danger);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+}
+
+.logout-full-btn:hover {
+    background: #fef2f2;
+    border-color: #fecaca;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.1);
+}
+
+[data-theme='dark'] .logout-full-btn:hover {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+/* ===============================
+   MOBILE
+================================ */
+@media (max-width: 480px) {
+    .profile-container {
+        padding: 1rem;
+        align-items: flex-start;
+        padding-top: 2rem;
+    }
+
+    .profile-card {
+        padding: 2rem 1.5rem;
+        border-radius: 20px;
+    }
+
+    .profile-name {
+        font-size: 1.5rem;
+    }
+
+    .detail-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.35rem;
+    }
+
+    .detail-value {
+        align-self: flex-start;
+    }
+}
