@@ -1,4 +1,4 @@
-# Notifiq - Centralized College Notification System
+# Notifiqx - Centralized College Notification System
 
 Notifiq is a modern, single-page React application designed to replace chaotic WhatsApp groups with a centralized, verified notice board for colleges. It features real-time alerts, role-based access control, and AI-powered notice rewriting.
 
@@ -25,7 +25,7 @@ Notifiq is a modern, single-page React application designed to replace chaotic W
 1.  **Clone the repository**
     ```bash
     git clone https://github.com/yourusername/notifiq.git
-    cd notifiq
+    cd notifiqx
     ```
 
 2.  **Install Dependencies**
@@ -72,6 +72,7 @@ Notifiq is a modern, single-page React application designed to replace chaotic W
 3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4.  Push to the Branch (`git push origin feature/AmazingFeature`)
 5.  Open a Pull Request
+
 
 
 
