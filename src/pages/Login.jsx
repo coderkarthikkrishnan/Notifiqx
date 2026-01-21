@@ -234,7 +234,7 @@ const Login = () => {
                     <div className="side-content">
                         <img src={logo} alt="Notifiq" className="side-logo" />
                         <div className="side-text">
-                            <h3>Welcome to<br />Notifiqx</h3>
+                            <h3>Welcome to<br />Notifiq</h3>
                             <p>
                                 Your central hub for academic updates, instant notices,
                                 and seamless campus connectivity.
@@ -371,4 +371,3 @@ const Login = () => {
 };
 
 export default Login;
-

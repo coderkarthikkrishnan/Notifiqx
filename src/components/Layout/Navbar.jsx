@@ -42,7 +42,7 @@ const Navbar = ({ user }) => {
                 {/* LEFT */}
                 <div className="navbar-left">
                     <Link to="/landing" className="navbar-brand">
-                        <img src={logo} alt="Notifiq" style={{ height: '32px' }} />
+                        <img src={logo} alt="Notifiqx" style={{ height: '32px' }} />
                     </Link>
 
                     {user?.collegeName && user.role !== 'super_admin' && (

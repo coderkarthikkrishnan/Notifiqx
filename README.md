@@ -1,6 +1,6 @@
 # Notifiqx - Centralized College Notification System
 
-Notifiq is a modern, single-page React application designed to replace chaotic WhatsApp groups with a centralized, verified notice board for colleges. It features real-time alerts, role-based access control, and AI-powered notice rewriting.
+Notifiqx is a modern, single-page React application designed to replace chaotic WhatsApp groups with a centralized, verified notice board for colleges. It features real-time alerts, role-based access control, and AI-powered notice rewriting.
 
 ## 🚀 Features
 
@@ -25,7 +25,7 @@ Notifiq is a modern, single-page React application designed to replace chaotic W
 1.  **Clone the repository**
     ```bash
     git clone https://github.com/yourusername/notifiq.git
-    cd notifiqx
+    cd notifiq
     ```
 
 2.  **Install Dependencies**
@@ -63,7 +63,19 @@ Notifiq is a modern, single-page React application designed to replace chaotic W
     npm run dev
     ```
 
+## 🌐 Deployment (Netlify)
 
+This project is configured for easy deployment on Netlify.
+
+1.  **Push to GitHub**: Ensure your code is pushed to a GitHub repository.
+2.  **New Site from Git**: Log in to Netlify and create a "New site from Git".
+3.  **Build Settings**:
+    - **Build Command**: `npm run build`
+    - **Publish Directory**: `dist`
+4.  **Environment Variables**: Go to Site Settings > Environment Variables in Netlify and add all the keys from your `.env` file.
+5.  **Deploy**: Click "Deploy Site".
+
+The included `netlify.toml` file handles the SPA routing redirects automatically.
 
 ## 🤝 Contributing
 
@@ -73,7 +85,6 @@ Notifiq is a modern, single-page React application designed to replace chaotic W
 4.  Push to the Branch (`git push origin feature/AmazingFeature`)
 5.  Open a Pull Request
 
+## 📄 License
 
-
-
-
+Distributed under the MIT License. See `LICENSE` for more information.

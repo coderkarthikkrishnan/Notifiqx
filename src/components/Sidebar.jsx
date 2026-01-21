@@ -59,7 +59,7 @@ const Sidebar = ({ user, selectedCategory, onCategoryChange, onSearch, isOpen, o
                     <button className={`nav-item ${selectedCategory === 'All' ? 'active' : ''}`} onClick={() => { onCategoryChange && onCategoryChange('All'); onClose && onClose(); }}>
                         <House size={20} /> Home
                     </button>
-                    <button className="nav-item">
+                    <button className={`nav-item ${selectedCategory === 'Saved' ? 'active' : ''}`} onClick={() => { onCategoryChange && onCategoryChange('Saved'); onClose && onClose(); }}>
                         <BookmarkSimple size={20} /> Saved Notices
                     </button>
                     <button className="nav-item">

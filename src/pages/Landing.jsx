@@ -23,7 +23,7 @@ const Landing = ({ user }) => {
     const schemaData = {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "name": "Notifiq",
+        "name": "Notifiqx",
         "applicationCategory": "EducationalApplication",
         "operatingSystem": "Web",
         "offers": {
@@ -139,7 +139,7 @@ const Landing = ({ user }) => {
 
                 {/* Footer */}
                 <footer className="landing-footer">
-                    <p>&copy; 2025 Notifiq. All rights reserved.</p>
+                    <p>&copy; 2025 Notifiqx. All rights reserved.</p>
                 </footer>
             </div>
         </React.Fragment>

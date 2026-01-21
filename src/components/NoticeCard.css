@@ -9,7 +9,7 @@
     transition: all 0.2s;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: auto;
     /* If grid layout used */
     width: 100%;
     /* Fill masonry column */

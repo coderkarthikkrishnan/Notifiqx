@@ -67,7 +67,7 @@ const ViewerDashboard = ({ user }) => {
             <main className="feed-container">
                 <NoticeFeed
                     user={user}
-                    category={selectedCategory === 'Saved' ? 'All' : selectedCategory} // Pass All for Saved for now or let Feed handle it
+                    category={selectedCategory}
                     searchTerm={searchTerm}
                 />
             </main>

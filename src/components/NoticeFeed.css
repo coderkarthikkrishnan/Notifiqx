@@ -7,6 +7,7 @@
     display: flex;
     width: auto;
     gap: 1rem;
+    align-items: flex-start;
 }
 
 .masonry-col {
