@@ -1,0 +1,530 @@
+/* Landing.css */
+.landing-container {
+    min-height: 100vh;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Nav */
+.landing-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-logo {
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: -0.03em;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-secondary {
+    background: transparent;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background: var(--color-text);
+    color: var(--color-bg);
+    padding: 0.6rem 1.25rem;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    padding: 6rem 1rem;
+    text-align: center;
+    overflow: hidden;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg);
+}
+
+.hero-circle-bg {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    /* Base circle - REMOVED as per user request (only ripple needed) */
+    /* border: 1px solid rgba(0, 0, 0, 0.1); */
+    border: none;
+}
+
+.hero-circle-bg::before,
+.hero-circle-bg::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    animation: ripple 3s infinite linear;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-circle-bg::before {
+    border: 1px solid #ef4444;
+    /* Red */
+    animation-delay: 0s;
+}
+
+.hero-circle-bg::after {
+    border: 1px solid #000;
+    animation-delay: 1.5s;
+}
+
+[data-theme='dark'] .hero-circle-bg::after {
+    border-color: #ffffff;
+}
+
+@keyframes ripple {
+    0% {
+        width: 400px;
+        height: 400px;
+        opacity: 0.15;
+        border-width: 2px;
+    }
+
+    100% {
+        width: 800px;
+        height: 800px;
+        opacity: 0;
+        border-width: 0px;
+    }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+    font-family: 'Monument Extended', sans-serif;
+}
+
+.hero-title .highlight {
+    background: none;
+    -webkit-text-fill-color: initial;
+    color: var(--color-text);
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@keyframes rotate-border {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.cta-button {
+    background: var(--color-text);
+    color: var(--color-bg);
+    padding: 0.7rem 1.5rem;
+    border-radius: 50px;
+    border: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+    width: fit-content;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: conic-gradient(from 0deg, transparent 0%, transparent 70%, var(--color-text) 100%);
+    transform: translate(-50%, -50%);
+    z-index: -2;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.cta-button::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    background: var(--gray-200);
+    border-radius: 48px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    background: transparent;
+    color: var(--color-text);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.cta-button:hover::before {
+    opacity: 1;
+    animation: rotate-border 1.5s linear infinite;
+}
+
+.cta-button:hover::after {
+    opacity: 1;
+}
+
+/* Floating Pills */
+.floating-pill {
+    position: absolute;
+    background: var(--color-surface);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--color-text);
+    z-index: 3;
+    border: 1px solid var(--gray-100);
+    animation: float 6s ease-in-out infinite;
+    transition: transform 0.3s ease;
+}
+
+.floating-pill:hover {
+    transform: scale(1.05);
+    cursor: default;
+}
+
+/* Specific Positions - Tuned to match image */
+.pill-exam {
+    top: 25%;
+    left: 15%;
+    animation-delay: 0s;
+    border-color: rgba(34, 197, 94, 0.2);
+}
+
+.pill-exam svg {
+    color: #22c55e;
+}
+
+.pill-urgent {
+    top: 35%;
+    right: 15%;
+    animation-delay: 2s;
+    border-color: rgba(239, 68, 68, 0.2);
+}
+
+.pill-urgent svg {
+    color: #ef4444;
+}
+
+.pill-verified {
+    bottom: 22%;
+    left: 20%;
+    animation-delay: 4s;
+    border-color: rgba(14, 165, 233, 0.2);
+}
+
+.pill-verified svg {
+    color: #0ea5e9;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* Features */
+.features {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section-header {
+    margin-bottom: 4rem;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    font-family: 'Monument Extended', sans-serif;
+
+}
+
+.section-header p {
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    padding: 2rem;
+    border-radius: 24px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.6s ease-out forwards;
+}
+
+.feature-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.feature-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.feature-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.feature-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.feature-card:hover {
+    border-color: var(--color-text);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    transform: translateY(-8px);
+}
+
+.feature-card .icon-box {
+    margin: 0 auto 1.5rem auto;
+    color: var(--color-text);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    padding: 1rem;
+    border-radius: 50%;
+    background: var(--gray-50);
+}
+
+.feature-card:hover .icon-box {
+    transform: scale(1.1) rotate(5deg);
+    background: var(--color-surface);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Specific Colors on Hover */
+.feature-card:nth-child(1):hover .icon-box {
+    color: #10b981;
+}
+
+.feature-card:nth-child(2):hover .icon-box {
+    color: #f59e0b;
+}
+
+.feature-card:nth-child(3):hover .icon-box {
+    color: #8b5cf6;
+}
+
+.feature-card:nth-child(4):hover .icon-box {
+    color: #3b82f6;
+}
+
+/* Old Icon Box styles removed/replaced above */
+
+.feature-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.feature-card p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Comparison */
+.comparison {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    padding: 6rem 2rem;
+    /* Combined background */
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.comparison-card {
+    background: var(--color-surface);
+    padding: 3rem;
+    border-radius: 24px;
+    width: 400px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 2px solid transparent;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.8s ease-out forwards;
+}
+
+.comparison-card.chaos {
+    border-color: rgba(239, 68, 68, 0.3);
+    animation-delay: 0.2s;
+}
+
+.comparison-card.clarity {
+    border-color: rgba(34, 197, 94, 0.3);
+    animation-delay: 0.4s;
+}
+
+.comparison-card:hover {
+    transform: translateY(-8px) scale(1.02);
+}
+
+.comparison-card.chaos:hover {
+    border-color: #ef4444;
+    box-shadow: 0 20px 40px rgba(239, 68, 68, 0.15);
+}
+
+.comparison-card.clarity:hover {
+    border-color: #22c55e;
+    box-shadow: 0 20px 40px rgba(34, 197, 94, 0.15);
+}
+
+.card-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 800;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.chaos .card-label {
+    color: #ef4444;
+}
+
+.clarity .card-label {
+    color: #22c55e;
+}
+
+.comparison-card p {
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.arrow-divider {
+    color: var(--color-text-muted);
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out 0.6s forwards;
+}
+
+/* Footer */
+.landing-footer {
+    text-align: center;
+    font-family: 'Monument Extended', sans-serif;
+    padding: 2rem;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text);
+    font-size: 0.7rem;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .floating-pill {
+        display: none;
+    }
+
+    /* Hide decoration on mobile */
+    .comparison {
+        flex-direction: column;
+    }
+
+    .comparison-card {
+        width: 100%;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+}

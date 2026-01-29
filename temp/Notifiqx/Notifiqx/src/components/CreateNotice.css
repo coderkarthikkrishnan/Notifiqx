@@ -1,0 +1,590 @@
+/* ===============================
+   MODAL OVERLAY
+================================ */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 1rem;
+}
+
+/* ===============================
+   MODAL CONTAINER
+================================ */
+/* ===============================
+   MODAL CONTAINER
+================================ */
+.modal-content {
+    background: var(--color-surface);
+    width: 100%;
+    max-width: 720px;
+    max-height: 92vh;
+    border-radius: 18px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+    /* overflow-y: auto;  <-- REMOVED to prevent scrollbar overlap on corners */
+    overflow: hidden;
+    /* Clips corners */
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===============================
+   HEADER
+================================ */
+.modal-header {
+    font-family: 'Monument Extended', sans-serif;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    /* Header stays fixed size */
+}
+
+.modal-header h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* Modern Close Button */
+.close-btn {
+    background: var(--gray-100);
+    border: none;
+    cursor: pointer;
+    color: var(--color-text-muted);
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+}
+
+.close-btn:hover {
+    background: var(--gray-200);
+    color: var(--color-text);
+    transform: rotate(90deg);
+    /* Playful spin interaction */
+}
+
+/* Dark mode specific tweak handled by vars, but explicit just in case */
+[data-theme='dark'] .close-btn {
+    background: var(--gray-200);
+    /* Slightly lighter than surface in dark */
+}
+
+[data-theme='dark'] .close-btn:hover {
+    background: var(--gray-700);
+    /* Lighter on hover */
+    color: white;
+}
+
+/* ... existing styles ... */
+
+/* ===============================
+   FORM GRID
+================================ */
+.create-form {
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    overflow-y: auto;
+    /* Scroll happens here now */
+    flex: 1;
+    /* Takes remaining height */
+    /* Add padding for scrollbar space if needed, usually auto is fine */
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+/* ===============================
+   FORM GROUP
+================================ */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.form-group label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+/* ===============================
+   INPUTS
+================================ */
+.form-control {
+    padding: 0.65rem 0.75rem;
+    border-radius: 12px;
+    border: 1px solid var(--color-border);
+    background: var(--gray-50);
+    font-size: 0.9rem;
+    color: var(--color-text);
+    transition: 0.2s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-subtle);
+    background: white;
+}
+
+textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* ===============================
+   WRITE / PREVIEW TOGGLE
+================================ */
+.preview-toggle {
+    display: flex;
+    background: var(--gray-100);
+    border-radius: 999px;
+    padding: 2px;
+}
+
+.toggle-btn {
+    border: none;
+    background: transparent;
+    padding: 0.35rem 0.8rem;
+    font-size: 0.75rem;
+    border-radius: 999px;
+    cursor: pointer;
+    color: var(--color-text-muted);
+}
+
+.toggle-btn.active {
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+/* ===============================
+   AI ACTIONS
+================================ */
+.ai-container {
+    margin-bottom: 0.75rem;
+}
+
+.ai-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.35rem;
+}
+
+.ai-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+}
+
+.btn-ai {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-primary-subtle);
+    background: var(--color-surface);
+    color: var(--color-primary);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-weight: 600;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-ai svg {
+    transition: transform 0.3s ease;
+}
+
+.btn-ai:hover {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--color-primary-subtle);
+}
+
+.btn-ai:hover svg {
+    transform: rotate(15deg) scale(1.1);
+}
+
+.btn-ai:active {
+    transform: translateY(0);
+}
+
+/* ===============================
+   MARKDOWN PREVIEW
+================================ */
+.markdown-preview {
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+/* ===============================
+   LINKS SECTION
+================================ */
+.link-input-row {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    align-items: center;
+}
+
+.link-input-row .form-control {
+    height: 40px;
+    border-radius: 10px;
+}
+
+.btn-add-link {
+    height: 40px;
+    width: 40px;
+    min-width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 600;
+    padding: 0;
+    position: relative;
+}
+
+.link-plus-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.plus-overlay {
+    position: absolute;
+    top: -4px;
+    right: -6px;
+    background: inherit;
+    border-radius: 50%;
+}
+
+.btn-secondary {
+    background: var(--gray-100);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+}
+
+.btn-secondary:hover {
+    background: var(--gray-200);
+    border-color: var(--color-text-muted);
+}
+
+[data-theme='dark'] .btn-secondary {
+    background: var(--gray-800);
+    border-color: var(--gray-700);
+    color: white;
+}
+
+[data-theme='dark'] .btn-secondary:hover {
+    background: var(--gray-700);
+}
+
+.links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-top: 0.5rem;
+}
+
+.link-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--gray-50);
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    border: 1px solid var(--color-border);
+    transition: all 0.2s;
+}
+
+.link-item.editing {
+    border-color: var(--color-primary);
+    background: var(--color-primary-subtle);
+}
+
+.link-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    overflow: hidden;
+    flex: 1;
+}
+
+.link-info a {
+    text-decoration: none;
+    color: var(--color-text);
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.link-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.link-actions button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.edit-link {
+    color: var(--color-text-muted);
+}
+
+.edit-link:hover {
+    color: var(--color-primary);
+    background: var(--color-primary-subtle);
+}
+
+.remove-link {
+    color: #ef4444;
+}
+
+.remove-link:hover {
+    background: #fee2e2;
+}
+
+.links-list a {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color 0.2s;
+}
+
+.links-list a:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+.link-chip {
+    transition: transform 0.2s, background 0.2s;
+}
+
+.link-chip:hover {
+    transform: translateX(4px);
+    background: var(--gray-100);
+}
+
+/* ===============================
+   FILE UPLOAD
+================================ */
+.file-upload-box {
+    border: 2px dashed var(--color-border);
+    border-radius: 14px;
+    padding: 1.25rem;
+    text-align: center;
+    cursor: pointer;
+    background: var(--gray-50);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    align-items: center;
+    font-size: 0.85rem;
+}
+
+.file-upload-box:hover {
+    border-color: var(--color-primary);
+    background: white;
+}
+
+.upload-progress {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+}
+
+.progress-bar {
+    height: 6px;
+    background: var(--gray-200);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progress-bar span {
+    height: 100%;
+    display: block;
+    background: var(--color-primary);
+}
+
+/* ===============================
+   IMAGE GRID
+================================ */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 0.75rem;
+}
+
+.image-preview-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+}
+
+.image-preview-card img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+}
+
+.image-preview-card button {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    color: white;
+    padding: 4px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* ===============================
+   COLOR PICKER
+================================ */
+.color-selector {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.color-swatch {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.color-swatch.active {
+    border-color: var(--color-text);
+    transform: scale(1.1);
+    box-shadow: 0 0 0 2px var(--color-surface), 0 0 0 4px var(--color-primary-subtle);
+}
+
+.color-swatch:hover {
+    transform: scale(1.15);
+}
+
+.color-swatch.default {
+    background: var(--gray-200);
+}
+
+.color-swatch.red {
+    background: var(--theme-red-bg);
+}
+
+.color-swatch.blue {
+    background: var(--theme-blue-bg);
+}
+
+.color-swatch.green {
+    background: var(--theme-green-bg);
+}
+
+.color-swatch.yellow {
+    background: var(--theme-yellow-bg);
+}
+
+/* ===============================
+   FOOTER
+================================ */
+.form-footer {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.btn {
+    padding: 0.55rem 1.1rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--color-primary);
+    color: white;
+    border: none;
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid var(--color-border);
+}
+
+/* ===============================
+   MOBILE
+================================ */
+@media (max-width: 640px) {
+    .create-form {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+
+    .modal-content {
+        max-height: 95vh;
+    }
+}
+
+/* ===============================
+   DARK MODE
+================================ */
+[data-theme='dark'] .modal-content {
+    background: var(--color-surface);
+}
+
+[data-theme='dark'] .form-control,
+[data-theme='dark'] .file-upload-box,
+[data-theme='dark'] .markdown-preview {
+    background: var(--gray-800);
+    border-color: var(--gray-700);
+    color: white;
+}
+
+[data-theme='dark'] .toggle-btn.active {
+    background: var(--gray-700);
+}
+
+[data-theme='dark'] .btn-ai {
+    background: var(--gray-800);
+    color: white;
+}
