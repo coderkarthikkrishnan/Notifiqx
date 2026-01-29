@@ -239,6 +239,39 @@ const CreateNotice = ({ onClose, onSuccess, initialData, user }) => {
                         />
                     </div>
 
+                    {/* CATEGORY & METADATA GRID */}
+                    <div className="form-group-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                        <div className="form-group">
+                            <label>Category</label>
+                            <select
+                                className="form-control"
+                                value={formData.category}
+                                onChange={e => setFormData({ ...formData, category: e.target.value })}
+                            >
+                                <option value="General">General</option>
+                                <option value="Placement">Placement</option>
+                                <option value="Exam">Exam</option>
+                                <option value="Event">Event</option>
+                                <option value="Urgent">Urgent</option>
+                                <option value="Verified">Verified</option>
+                                <option value="Holiday">Holiday</option>
+                            </select>
+                        </div>
+
+                        <div className="form-group">
+                            <label>Priority</label>
+                            <select
+                                className="form-control"
+                                value={formData.priority}
+                                onChange={e => setFormData({ ...formData, priority: e.target.value })}
+                            >
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="High">High</option>
+                            </select>
+                        </div>
+                    </div>
+
                     {/* DESCRIPTION */}
                     <div className="form-group full-width">
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
@@ -294,36 +327,6 @@ const CreateNotice = ({ onClose, onSuccess, initialData, user }) => {
                                 )}
                             </div>
                         )}
-                    </div>
-
-                    {/* CATEGORY & METADATA GRID */}
-                    <div className="form-group">
-                        <label>Category</label>
-                        <select
-                            className="form-control"
-                            value={formData.category}
-                            onChange={e => setFormData({ ...formData, category: e.target.value })}
-                        >
-                            <option value="General">General</option>
-                            <option value="Exam">Exam</option>
-                            <option value="Event">Event</option>
-                            <option value="Urgent">Urgent</option>
-                            <option value="Verified">Verified</option>
-                            <option value="Holiday">Holiday</option>
-                        </select>
-                    </div>
-
-                    <div className="form-group">
-                        <label>Priority</label>
-                        <select
-                            className="form-control"
-                            value={formData.priority}
-                            onChange={e => setFormData({ ...formData, priority: e.target.value })}
-                        >
-                            <option value="Low">Low</option>
-                            <option value="Medium">Medium</option>
-                            <option value="High">High</option>
-                        </select>
                     </div>
 
                     {/* NEW LINKS SECTION */}
